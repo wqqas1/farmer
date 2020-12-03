@@ -21,42 +21,32 @@
         <span class="hidden md:inline">User</span>
       </inertia-link>
     </div>
-    <div class="bg-white rounded shadow overflow-x-auto">
-      <table class="w-full whitespace-no-wrap">
-        <tr class="text-left font-bold">
-          <th class="px-6 pt-6 pb-4">Name</th>
-          <th class="px-6 pt-6 pb-4">Email</th>
-          <th class="px-6 pt-6 pb-4" colspan="2">Role</th>
-        </tr>
-        <tr v-for="user in users" :key="user.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
-          <td class="border-t">
-            <inertia-link class="px-6 py-4 flex items-center focus:text-indigo-500" :href="route('users.edit', user.id)">
-              <img v-if="user.photo" class="block w-5 h-5 rounded-full mr-2 -my-2" :src="user.photo">
-              {{ user.name }}
-              <icon v-if="user.deleted_at" name="trash" class="flex-shrink-0 w-3 h-3 fill-gray-400 ml-2" />
-            </inertia-link>
-          </td>
-          <td class="border-t">
-            <inertia-link class="px-6 py-4 flex items-center" :href="route('users.edit', user.id)" tabindex="-1">
-              {{ user.email }}
-            </inertia-link>
-          </td>
-          <td class="border-t">
-            <inertia-link class="px-6 py-4 flex items-center" :href="route('users.edit', user.id)" tabindex="-1">
-              {{ user.owner ? 'Owner' : 'User' }}
-            </inertia-link>
-          </td>
-          <td class="border-t w-px">
-            <inertia-link class="px-4 flex items-center" :href="route('users.edit', user.id)" tabindex="-1">
-              <icon name="cheveron-right" class="block w-6 h-6 fill-gray-400" />
-            </inertia-link>
-          </td>
-        </tr>
-        <tr v-if="users.length === 0">
-          <td class="border-t px-6 py-4" colspan="4">No users found.</td>
-        </tr>
-      </table>
+    <!-- Cards Start -->
+    <div class="my-12 mx-auto px-4 md:px-12">
+      <div class="flex flex-wrap -mx-1 lg:-mx-4">
+        <!-- Column -->
+        <div v-for="user in users.data" :key="user.id" class="my-1 px-1 w-full md:w-1/3 lg:my-4 lg:px-4 lg:w-1/5">
+          <!-- Article -->
+          <inertia-link class="px-6 py-4 flex items-center focus:text-indigo-500" :href="route('users.edit', user.id)">
+          <article class="overflow-hidden rounded-lg shadow-lg">
+            <img v-if="user.photo" class="block h-auto w-full" :src="user.photo">
+            <icon v-if="user.deleted_at" name="trash" class="flex-shrink-0 w-8 h-8 fill-gray-400 ml-2" />
+            <div class="px-2 py-1 font-bold text-sm mb-2">{{ user.name }}</div>
+            <div class="px-2 text-sm mb-2">{{ user.phone }}</div>
+            <div class="px-2 text-sm mb-2">{{ user.email }}</div>
+
+          </article>
+          </inertia-link>
+          <!-- END Article -->
+
+        </div>
+        <!-- END Column -->
+
+      </div>
+      <pagination :links="users.links" />
     </div>
+    <!-- Cards End -->
+
   </div>
 </template>
 
@@ -67,16 +57,19 @@ import mapValues from 'lodash/mapValues'
 import pickBy from 'lodash/pickBy'
 import SearchFilter from '@/Shared/SearchFilter'
 import throttle from 'lodash/throttle'
+import Pagination from '@/Shared/Pagination'
 
 export default {
   metaInfo: { title: 'Users' },
+  name:'listUsers',
   layout: Layout,
   components: {
     Icon,
     SearchFilter,
+    Pagination,
   },
   props: {
-    users: Array,
+    users: Object,
     filters: Object,
   },
   data() {

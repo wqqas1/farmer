@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
-use App\Support\HasAdvancedFilter;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use \DateTimeInterface;
 
-class income extends Model
+class Income extends Model
 {
-    use HasAdvancedFilter, HasFactory;
+    use SoftDeletes, HasFactory;
 
     public $table = 'incomes';
 

@@ -15,6 +15,7 @@ class CreateIncomesTable extends Migration
     {
         Schema::create('incomes', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('account_id')->index();
             $table->bigInteger('income_tag_id')->unsigned()->nullable();
             $table->bigInteger('recurring_id')->nullable();
             $table->date('happened_on');

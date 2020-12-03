@@ -15,6 +15,7 @@ class CreateExpensesTable extends Migration
     {
         Schema::create('expenses', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('account_id')->index();
             $table->bigInteger('recurring_id')->unsigned()->nullable();
             $table->bigInteger('expense_tag_id')->unsigned()->nullable();
             $table->date('happened_on');

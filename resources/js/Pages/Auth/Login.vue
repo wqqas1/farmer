@@ -41,8 +41,8 @@ export default {
     return {
       sending: false,
       form: {
-        email: 'johndoe@example.com',
-        password: 'secret',
+        email: 'superadmin@ioscrum.com',
+        password: 'password',
         remember: null,
       },
     }

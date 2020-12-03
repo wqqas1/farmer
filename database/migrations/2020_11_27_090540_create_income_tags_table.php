@@ -15,6 +15,7 @@ class CreateIncomeTagsTable extends Migration
     {
         Schema::create('income_tags', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('account_id')->index();
             $table->string('name');
             $table->char('color', 6);
             $table->timestamps();

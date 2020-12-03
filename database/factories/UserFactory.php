@@ -19,7 +19,7 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
         'email' => $faker->unique()->safeEmail,
-        'password' => 'secret',
+        'password' => 'password',
         'remember_token' => Str::random(10),
         'owner' => false,
     ];

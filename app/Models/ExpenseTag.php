@@ -2,51 +2,31 @@
 
 namespace App\Models;
 
-use App\Support\HasAdvancedFilter;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use \DateTimeInterface;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class expenseTag extends Model
+class ExpenseTag extends Model
 {
-    use HasAdvancedFilter, HasFactory;
+    use SoftDeletes;
 
-    public $table = 'expense_tags';
+    protected $dates = ['deleted_at'];
 
-    protected $dates = [
-        'created_at',
-        'updated_at',
-    ];
+    protected $fillable = ['name', 'color'];
 
-    protected $fillable = [
-        'name',
-        'created_at',
-        'updated_at',
-    ];
-    /**
-     * The attributes that should be casted to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'id'    => 'integer',
-        'name'  => 'string'
-    ];
-    /**
-     * Validation rules
-     *
-     * @var array
-     */
-    public static $rules = [
-        'name'  => 'required|unique:expense_tags'
-    ];
-
-    public $filterable = [
-            'name'
-        ];
-
-    protected function serializeDate(DateTimeInterface $date)
+    // Relations
+    public function expenses()
     {
-        return $date->format('Y-m-d H:i:s');
+        return $this->hasMany(Expense::class);
+    }
+
+    // Custom
+    private static function randomColorPart()
+    {
+        return str_pad(dechex(mt_rand(0, 255)), 2, '0', STR_PAD_LEFT);
+    }
+
+    public static function randomColor()
+    {
+        return self::randomColorPart() . self::randomColorPart() . self::randomColorPart();
     }
 }

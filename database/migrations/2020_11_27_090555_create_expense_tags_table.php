@@ -15,6 +15,7 @@ class CreateExpenseTagsTable extends Migration
     {
         Schema::create('expense_tags', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('account_id')->index();
             $table->string('name');
             $table->char('color', 6);
             $table->timestamps();

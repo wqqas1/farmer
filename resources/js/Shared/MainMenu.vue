@@ -19,6 +19,24 @@
       </inertia-link>
     </div>
     <div class="mb-4">
+      <inertia-link class="flex items-center group py-3" :href="route('income_tags')">
+        <icon name="users" class="w-4 h-4 mr-2" :class="isUrl('income_tags') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />
+        <div :class="isUrl('income_tags') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Income Tags</div>
+      </inertia-link>
+    </div>
+    <div class="mb-4">
+      <inertia-link class="flex items-center group py-3" :href="route('expense_tags')">
+        <icon name="users" class="w-4 h-4 mr-2" :class="isUrl('expense_tags') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />
+        <div :class="isUrl('expense_tags') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Expense Tags</div>
+      </inertia-link>
+    </div>
+    <div class="mb-4">
+      <inertia-link class="flex items-center group py-3" :href="route('goals')">
+        <icon name="users" class="w-4 h-4 mr-2" :class="isUrl('goals') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />
+        <div :class="isUrl('goals') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Goals</div>
+      </inertia-link>
+    </div>
+    <div class="mb-4">
       <inertia-link class="flex items-center group py-3" :href="route('reports')">
         <icon name="printer" class="w-4 h-4 mr-2" :class="isUrl('reports') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />
         <div :class="isUrl('reports') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Reports</div>

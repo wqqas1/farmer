@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\GoalsController;
+use App\Http\Controllers\IncomeTagsController;
+use App\Http\Controllers\ExpenseTagsController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImagesController;
@@ -127,6 +130,95 @@ Route::delete('contacts/{contact}', [ContactsController::class, 'destroy'])
 
 Route::put('contacts/{contact}/restore', [ContactsController::class, 'restore'])
     ->name('contacts.restore')
+    ->middleware('auth');
+
+// Goals
+
+Route::get('goals', [GoalsController::class, 'index'])
+    ->name('goals')
+    ->middleware('remember', 'auth');
+
+Route::get('goals/create', [GoalsController::class, 'create'])
+    ->name('goals.create')
+    ->middleware('auth');
+
+Route::post('goals', [GoalsController::class, 'store'])
+    ->name('goals.store')
+    ->middleware('auth');
+
+Route::get('goals/{goal}/edit', [GoalsController::class, 'edit'])
+    ->name('goals.edit')
+    ->middleware('auth');
+
+Route::put('goals/{goal}', [GoalsController::class, 'update'])
+    ->name('goals.update')
+    ->middleware('auth');
+
+Route::delete('goals/{goal}', [GoalsController::class, 'destroy'])
+    ->name('goals.destroy')
+    ->middleware('auth');
+
+Route::put('goals/{goal}/restore', [GoalsController::class, 'restore'])
+    ->name('goals.restore')
+    ->middleware('auth');
+
+// Income Tags
+
+Route::get('income_tags', [IncomeTagsController::class, 'index'])
+    ->name('income_tags')
+    ->middleware('remember', 'auth');
+
+Route::get('income_tags/create', [IncomeTagsController::class, 'create'])
+    ->name('income_tags.create')
+    ->middleware('auth');
+
+Route::post('income_tags', [IncomeTagsController::class, 'store'])
+    ->name('income_tags.store')
+    ->middleware('auth');
+
+Route::get('income_tags/{income_tag}/edit', [IncomeTagsController::class, 'edit'])
+    ->name('income_tags.edit')
+    ->middleware('auth');
+
+Route::put('income_tags/{income_tag}', [IncomeTagsController::class, 'update'])
+    ->name('income_tags.update')
+    ->middleware('auth');
+
+Route::delete('income_tags/{income_tag}', [IncomeTagsController::class, 'destroy'])
+    ->name('income_tags.destroy')
+    ->middleware('auth');
+
+Route::put('income_tags/{income_tag}/restore', [IncomeTagsController::class, 'restore'])
+    ->name('income_tags.restore')
+    ->middleware('auth');
+
+// Expense Tags
+Route::get('expense_tags', [ExpenseTagsController::class, 'index'])
+    ->name('expense_tags')
+    ->middleware('remember', 'auth');
+
+Route::get('expense_tags/create', [ExpenseTagsController::class, 'create'])
+    ->name('expense_tags.create')
+    ->middleware('auth');
+
+Route::post('expense_tags', [ExpenseTagsController::class, 'store'])
+    ->name('expense_tags.store')
+    ->middleware('auth');
+
+Route::get('expense_tags/{expense_tag}/edit', [ExpenseTagsController::class, 'edit'])
+    ->name('expense_tags.edit')
+    ->middleware('auth');
+
+Route::put('expense_tags/{expense_tag}', [ExpenseTagsController::class, 'update'])
+    ->name('expense_tags.update')
+    ->middleware('auth');
+
+Route::delete('expense_tags/{expense_tag}', [ExpenseTagsController::class, 'destroy'])
+    ->name('expense_tags.destroy')
+    ->middleware('auth');
+
+Route::put('expense_tags/{expense_tag}/restore', [ExpenseTagsController::class, 'restore'])
+    ->name('expense_tags.restore')
     ->middleware('auth');
 
 // Reports
