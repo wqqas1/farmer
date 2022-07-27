@@ -14,7 +14,7 @@
         "@inertiajs/inertia": "^0.3.1",
         "@inertiajs/inertia-vue": "^0.2.3",
         "@inertiajs/progress": "^0.1.0",
-        "cross-env": "^5.2.1",
+        "cross-env": "^7.0.3",
         "dayjs": "^1.9.6",
         "eslint": "^5.16.0",
         "eslint-plugin-vue": "^5.2.3",
