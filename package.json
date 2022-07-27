@@ -32,7 +32,7 @@
         "vue-color": "^2.7.1",
         "vue-meta": "^2.3.1",
         "vue-tailwind-modal": "^1.0.5",
-        "vue-tailwind-picker": "^1.1.5",
+        "vue-tailwind-picker": "^1.1.6",
         "vue-template-compiler": "^2.6.11"
     }
 }
